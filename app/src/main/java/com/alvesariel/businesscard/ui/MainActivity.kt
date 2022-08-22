@@ -1,9 +1,8 @@
 package com.alvesariel.businesscard.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import com.alvesariel.businesscard.R
 import com.alvesariel.businesscard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,5 +11,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        insertListener()
     }
+
+    private fun insertListener() {
+
+        //direcionando o clique do botão para a view de formulário
+
+        binding.fab.setOnClickListener {
+            val intent = Intent(this@MainActivity, AddBusinessCardActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+
 }
