@@ -1,8 +1,8 @@
 package com.alvesariel.businesscard.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.alvesariel.businesscard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
