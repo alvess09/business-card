@@ -14,6 +14,5 @@ it using the respective technologies:
 <br>
 . Live Data
 <br>
-##Prototype
-<br>
+## Prototype
 <img src="./project.png" height="500" width="500">
