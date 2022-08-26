@@ -5,7 +5,7 @@ it using the respective technologies:
 ##Front-End
 . ViewBinding
 <br>
-. ReciclerView
+. RecyclerView
 <br>
 . Material Design UI
 <br>
