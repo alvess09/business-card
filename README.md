@@ -15,4 +15,5 @@ it using the respective technologies:
 . Live Data
 <br>
 ##Prototype
+<br>
 <img src="./project.png" height="500" width="500">
