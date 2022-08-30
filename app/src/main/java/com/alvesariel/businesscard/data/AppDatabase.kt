@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+
+
 @Database(entities = [BusinessCard::class], version = 1)
-abstract class  AppDatabase: RoomDatabase {
+
+abstract class  AppDatabase: RoomDatabase() {
+
     abstract fun businessDao() : BusinessCardDao
 
     companion object {
@@ -13,15 +17,15 @@ abstract class  AppDatabase: RoomDatabase {
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context:Context): AppDatabase {
-            return  INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+            return INSTANCE?: synchronized(this) {
+                val instance = Room.databaseBuilder (
                     context.applicationContext,
                     AppDatabase::class.java,
-                    name:"businesscard_db"
+                    "businesscard_db"
                 ).build()
                 INSTANCE = instance
                 instance
-            }
+            } as AppDatabase
         }
     }
 }
