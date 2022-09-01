@@ -2,10 +2,19 @@ package com.alvesariel.businesscard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
+import com.alvesariel.businesscard.App
+import com.alvesariel.businesscard.R
+import com.alvesariel.businesscard.data.BusinessCard
 import com.alvesariel.businesscard.databinding.ActivityAddBusinessCardBinding
 
 class AddBusinessCardActivity : AppCompatActivity() {
     private val binding by lazy { ActivityAddBusinessCardBinding.inflate(layoutInflater)}
+
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory((application as App).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +26,22 @@ class AddBusinessCardActivity : AppCompatActivity() {
         binding.btnClose.setOnClickListener {
             finish()
         }
+
+        //ação do botão confirmar formulário de cartão
+
         binding.btnConfirm.setOnClickListener {
-            //TODO
+            val businessCard = BusinessCard(
+                nome = binding.tilNome.editText?.text.toString(),
+                empresa = binding.tilEmpresa.editText?.text.toString(),
+                telefone = binding.tilTelefone.editText?.text.toString(),
+                email = binding.tilEmail.editText?.text.toString(),
+                fundoPersonalizado = binding.tilCor.editText?.text.toString()
+
+            )
+            mainViewModel.insert(businessCard)
+            Toast.makeText(this, R.string.label_show_success,Toast.LENGTH_SHORT).show()
+            finish()
+
         }
     }
 
